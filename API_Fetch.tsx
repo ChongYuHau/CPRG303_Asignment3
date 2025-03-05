@@ -43,7 +43,7 @@ const NumbersFactScreen: React.FC = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Enter a Date for a Fun Fact!</Text>
+            <Text style={styles.title}>Enter a Date for a Fun Fact</Text>
 
             {/* Month Input */}
             <TextInput
@@ -52,6 +52,7 @@ const NumbersFactScreen: React.FC = () => {
                 placeholder="Enter Month (1-12)"
                 value={month}
                 onChangeText={setMonth}
+                placeholderTextColor="#444"
             />
 
             {/* Day Input */}
@@ -61,12 +62,17 @@ const NumbersFactScreen: React.FC = () => {
                 placeholder="Enter Day (1-31)"
                 value={day}
                 onChangeText={setDay}
+                placeholderTextColor="#444"
             />
 
             {loading ? (
-                <ActivityIndicator size="large" color="#007bff" />
+                <ActivityIndicator size="large" color="#ff4e50" />
             ) : (
-                fact && <Text style={styles.fact}>{fact}</Text>
+                fact && (
+                    <View style={styles.factContainer}>
+                        <Text style={styles.factText}>{fact}</Text>
+                    </View>
+                )
             )}
         </View>
     );
@@ -79,40 +85,54 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
-        backgroundColor: '#f5f5f5',
+        backgroundColor: '#87CEFA', // Sky blue background
     },
     title: {
-        fontSize: 20,
+        fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 20,
         textAlign: 'center',
+        color: '#FFFFFF', // White text
+        textShadowColor: 'rgba(0, 0, 0, 0.3)',
+        textShadowOffset: { width: 2, height: 2 },
+        textShadowRadius: 4,
     },
     input: {
         width: '80%',
         height: 50,
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 5,
-        paddingHorizontal: 10,
+        borderWidth: 3, // Increased border thickness for better visibility
+        borderColor: '#00008B', // Dark Blue Border
+        borderRadius: 12,
+        paddingHorizontal: 15,
         fontSize: 18,
-        marginBottom: 20,
+        marginBottom: 15,
         backgroundColor: '#fff',
         textAlign: 'center',
-    },
-    fact: {
-        marginTop: 20,
-        fontSize: 18,
-        textAlign: 'center',
-        padding: 10,
-        backgroundColor: '#fff',
-        borderRadius: 5,
-        borderWidth: 1,
-        borderColor: '#ddd',
+        color: '#2d3436', // Dark gray text
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
+        shadowOffset: { width: 2, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+        elevation: 5,
+    },
+    factContainer: {
+        marginTop: 20,
+        backgroundColor: '#00cec9', // Bright cyan
+        padding: 15,
+        borderRadius: 12,
+        borderWidth: 2,
+        borderColor: '#0984e3', // Dark blue border
+        shadowColor: '#000',
+        shadowOffset: { width: 2, height: 2 },
+        shadowOpacity: 0.3,
         shadowRadius: 5,
-        elevation: 3,
+        elevation: 5,
+    },
+    factText: {
+        fontSize: 18,
+        textAlign: 'center',
+        color: '#fff',
+        fontWeight: 'bold',
     },
 });
 
