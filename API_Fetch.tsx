@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, StyleSheet, ActivityIndicator, Image } from 'react-native';
+import { View, Text, TextInput, StyleSheet, ActivityIndicator, Image, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 const NumbersFactScreen: React.FC = () => {
     const [month, setMonth] = useState('');
@@ -42,6 +42,7 @@ const NumbersFactScreen: React.FC = () => {
     };
 
     return (
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.container}>
             <Image source={require("./assets/funfactlogo.png")} style={styles.logo}/>
 
@@ -77,6 +78,7 @@ const NumbersFactScreen: React.FC = () => {
                 )
             )}
         </View>
+        </TouchableWithoutFeedback>
     );
 };
 
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 20,
+        padding: 10,
         backgroundColor: '#87CEFA', // Sky blue background
     },
     logo: {
@@ -99,7 +101,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 20,
         textAlign: 'center',
-        color: '#FFFFFF', // White text
+        color: '#2d3436',
         textShadowColor: 'rgba(0, 0, 0, 0.3)',
         textShadowOffset: { width: 2, height: 2 },
         textShadowRadius: 4,
@@ -123,7 +125,9 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     factContainer: {
-        marginTop: 20,
+        marginTop: 20,   
+        marginLeft: 30,  
+        marginRight: 30, 
         backgroundColor: '#00cec9', // Bright cyan
         padding: 15,
         borderRadius: 12,
