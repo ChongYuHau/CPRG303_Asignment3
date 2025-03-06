@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, TextInput, StyleSheet, ActivityIndicator, Image } from 'react-native';
 
 const NumbersFactScreen: React.FC = () => {
     const [month, setMonth] = useState('');
@@ -43,6 +43,8 @@ const NumbersFactScreen: React.FC = () => {
 
     return (
         <View style={styles.container}>
+            <Image source={require("./assets/funfactlogo.png")} style={styles.logo}/>
+
             <Text style={styles.title}>Enter a Date for a Fun Fact</Text>
 
             {/* Month Input */}
@@ -86,6 +88,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 20,
         backgroundColor: '#87CEFA', // Sky blue background
+    },
+    logo: {
+        width: 200,
+        height: 200,
+        marginBottom: 20,
     },
     title: {
         fontSize: 24,
